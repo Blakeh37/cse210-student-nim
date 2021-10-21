@@ -28,7 +28,8 @@ class Board:
         stones = move.get_stones()
 
         for i in range(stones):
-            self.piles[pile].pop()
+            if 'O' in self.piles[pile]:
+                self.piles[pile].pop()
 
     def is_empty(self):
         #checks if there is no more stones 
@@ -37,6 +38,8 @@ class Board:
         for key in range(self.num_piles):
             if 'O' in self.piles[key]:
                 win_check = False
+                break
+
             else:
                 win_check = True
         return win_check
